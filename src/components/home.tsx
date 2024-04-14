@@ -122,7 +122,7 @@ export default function Home() {
           </div>
           <div className="flex flex-col gap-4">
             {words.map((word) => {
-              return <WordCard word={word} />;
+              return <WordCard key={word.name} word={word} />;
             })}
           </div>
         </div>
