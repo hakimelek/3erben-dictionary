@@ -70,8 +70,8 @@ model Word {
     id               String    @id @default(cuid())
     updatedAt        DateTime  @default(now()) @updatedAt
     createdAt        DateTime  @default(now())
-    owner            User      @relation("ownedWords", fields: [ownerId], references: [id])
-    ownerId          String
+    owner            User?     @relation("ownedWords", fields: [ownerId], references: [id])
+    ownerId          String?
     name             String?   @unique
     definition       String?
     exampleSentences String[]  @default([])

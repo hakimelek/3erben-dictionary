@@ -10,7 +10,7 @@ import { Button } from "@/components/ui/button";
 const SideBar = () => {
   return (
     <div>
-      <Card>
+      <Card className="mb-4">
         <CardHeader>
           <CardTitle>Contribute</CardTitle>
           <CardDescription>

@@ -11,6 +11,7 @@
   },
   "aliases": {
     "utils": "@/lib/utils",
+    "prisma": "@/lib/prisma",
     "components": "@/components"
   }
 }
