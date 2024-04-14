@@ -8,7 +8,17 @@ import {
 } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 
-const WordCard = ({ word }) => {
+interface WordProps {
+  word: {
+    name: string;
+    definition: string;
+    exampleSentences?: string[]; // assumed optional and array of strings
+    likes: number;
+    dislikes: number;
+  };
+}
+
+const WordCard: React.FC<WordProps> = ({ word }) => {
   const { name, definition, exampleSentences, likes, dislikes } = word;
   return (
     <Card>
