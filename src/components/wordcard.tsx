@@ -24,7 +24,7 @@ const WordCard: React.FC<WordProps> = ({ word }) => {
     <Card>
       <CardHeader>
         <CardTitle>{name}</CardTitle>
-        <CardDescription className="text-lg font-bold text-gray-900 dark:text-gray-100">
+        <CardDescription className="text-lg text-gray-900 dark:text-gray-100">
           {definition}
         </CardDescription>
       </CardHeader>
