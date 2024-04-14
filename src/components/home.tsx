@@ -23,17 +23,7 @@ To read more about using these font, please visit the Next.js documentation:
 - App Directory: https://nextjs.org/docs/app/building-your-application/optimizing/fonts
 - Pages Directory: https://nextjs.org/docs/pages/building-your-application/optimizing/fonts
 **/
-import Link from "next/link";
-import { Input } from "@/components/ui/input";
-import {
-  CardTitle,
-  CardDescription,
-  CardHeader,
-  CardContent,
-  Card,
-  CardFooter,
-} from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
+import SideBar from "./sidebar";
 import WordCard from "./wordcard";
 
 const words = [
@@ -60,73 +50,22 @@ const words = [
   {
     name: "Weld el 9a7ba",
     definition: 'The Tunisian word for "son of a bitch".',
+    likes: 0,
+    dislikes: 0,
   },
 ];
 
 export default function Home() {
   return (
-    <div
-      key="1"
-      className="mx-auto grid w-full max-w-6xl gap-4 px-4 py-2 md:px-6"
-    >
-      <header className="flex flex-col justify-center space-y-2 md:flex-row md:items-center md:space-x-4 md:space-y-0">
-        <Link
-          className="flex items-center gap-2 text-xl font-bold md:text-2xl"
-          href="#"
-        >
-          3erben Dictionary
-        </Link>
-        <nav className="flex items-center gap-4">
-          <Link className="font-medium underline" href="#">
-            Add a Word
-          </Link>
-          <Link className="font-medium underline" href="#">
-            Random
-          </Link>
-        </nav>
-        <form className="flex-1 md:ml-auto">
-          <Input placeholder="Search..." type="search" />
-        </form>
-      </header>
-      <main>
-        <div className="grid gap-4 md:grid-cols-[250px_1fr] lg:grid-cols-[300px_1fr]">
-          <div className="flex flex-col gap-2">
-            <Card>
-              <CardHeader>
-                <CardTitle>Contribute</CardTitle>
-                <CardDescription>
-                  Add a new word and definition to the dictionary.
-                </CardDescription>
-              </CardHeader>
-              <CardContent>
-                <Button className="w-full">Add a Word</Button>
-              </CardContent>
-            </Card>
-            <Card>
-              <CardHeader>
-                <CardTitle>Top Words</CardTitle>
-                <CardDescription>
-                  The most searched words in the dictionary.
-                </CardDescription>
-              </CardHeader>
-              <CardContent className="p-3">
-                <ol className="grid list-decimal gap-2 pl-6">
-                  <li className="font-semibold">3erben</li>
-                  <li>Chbik</li>
-                  <li>Weld el 9a7ba</li>
-                  <li>Bouk</li>
-                  <li>7alouf</li>
-                </ol>
-              </CardContent>
-            </Card>
-          </div>
-          <div className="flex flex-col gap-4">
-            {words.map((word) => {
-              return <WordCard key={word.name} word={word} />;
-            })}
-          </div>
-        </div>
-      </main>
+    <div className="grid gap-4 md:grid-cols-[250px_1fr] lg:grid-cols-[300px_1fr]">
+      <div className="flex flex-col gap-2">
+        <SideBar />
+      </div>
+      <div className="flex flex-col gap-4">
+        {words.map((word) => {
+          return <WordCard key={word.name} word={word} />;
+        })}
+      </div>
     </div>
   );
 }
