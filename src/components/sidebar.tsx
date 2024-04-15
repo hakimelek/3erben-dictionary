@@ -6,6 +6,7 @@ import {
   Card,
 } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
+import Link from "next/link";
 
 const SideBar = () => {
   return (
@@ -18,7 +19,9 @@ const SideBar = () => {
           </CardDescription>
         </CardHeader>
         <CardContent>
-          <Button className="w-full">Add a Word</Button>
+          <Link href="/new">
+            <Button className="w-full">Add a Word</Button>
+          </Link>
         </CardContent>
       </Card>
       <Card>
@@ -28,7 +31,7 @@ const SideBar = () => {
             The most searched words in the dictionary.
           </CardDescription>
         </CardHeader>
-        <CardContent className="p-3">
+        <CardContent className="p-4">
           <ol className="grid list-decimal gap-2 pl-6">
             <li className="font-semibold">3erben</li>
             <li>Chbik</li>

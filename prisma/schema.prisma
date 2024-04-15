@@ -77,6 +77,7 @@ model Word {
     exampleSentences String[]  @default([])
     likes            Like[]    @relation("likedWords")
     dislikes         Dislike[] @relation("dislikedWords")
+    tags             String[]
 }
 
 model Like {
@@ -85,8 +86,8 @@ model Like {
     createdAt DateTime @default(now())
     word      Word     @relation("likedWords", fields: [wordId], references: [id])
     wordId    String
-    user      User     @relation("likedWords", fields: [userId], references: [id])
-    userId    String
+    user      User?    @relation("likedWords", fields: [userId], references: [id])
+    userId    String?
 }
 
 model Dislike {
@@ -95,6 +96,6 @@ model Dislike {
     createdAt DateTime @default(now())
     word      Word     @relation("dislikedWords", fields: [wordId], references: [id])
     wordId    String
-    user      User     @relation("dislikedWords", fields: [userId], references: [id])
-    userId    String
+    user      User?    @relation("dislikedWords", fields: [userId], references: [id])
+    userId    String?
 }

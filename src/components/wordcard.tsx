@@ -23,7 +23,7 @@ const WordCard: React.FC<WordProps> = ({ word }) => {
   return (
     <Card>
       <CardHeader>
-        <CardTitle>{name}</CardTitle>
+        <CardTitle className="text-blue-300">{name}</CardTitle>
         <CardDescription className="text-lg text-gray-900 dark:text-gray-100">
           {definition}
         </CardDescription>
