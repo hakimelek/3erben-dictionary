@@ -34,7 +34,7 @@ export default function RootLayout({
               <Link className="font-medium underline" href="/new">
                 Add a Word
               </Link>
-              <Link className="font-medium underline" href="#">
+              <Link className="font-medium underline" href="/random">
                 Random
               </Link>
             </nav>

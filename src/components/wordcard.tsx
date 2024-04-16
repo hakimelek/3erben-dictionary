@@ -30,16 +30,16 @@ const WordCard: React.FC<WordProps> = ({ word }) => {
       </CardHeader>
       <CardContent>
         <div className="grid gap-4">
-          <div className="grid gap-2">
-            <div className="font-semibold">Example sentences</div>
-            {exampleSentences && exampleSentences.length > 0 && (
+          {exampleSentences && exampleSentences.length > 0 && (
+            <div className="grid gap-2">
+              <div className="font-semibold">Example sentences</div>
               <ul className="grid list-disc gap-2 pl-6">
                 {exampleSentences.map((sentence) => (
                   <li key={sentence}>{sentence}</li>
                 ))}
               </ul>
-            )}
-          </div>
+            </div>
+          )}
         </div>
       </CardContent>
       <CardFooter>

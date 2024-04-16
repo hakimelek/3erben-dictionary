@@ -12,42 +12,36 @@ import { Button } from "@/components/ui/button";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import SideBar from "./sidebar";
-import { useState } from "react";
+import { useRouter } from "next/navigation";
 
 export default function NewWord() {
-  // Add fetch logic to submit the new word using /api/word as a POST request
-  // The body of the request should be the word, definition, and example sentence
-  const [word, setWord] = useState("");
-  const [definition, setDefinition] = useState("");
-  const [example, setExample] = useState("");
+  const router = useRouter();
 
   // Function to handle form submission
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    // Construct the payload
-    const payload = {
-      word,
-      definition,
-      example,
-    };
+    const form = e.target;
+    const formData = new FormData(form);
 
     // Perform the POST request to the server
     try {
-      const response = await fetch(`${process.env.API_URL}/word`, {
+      const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/word`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify(payload),
+        body: JSON.stringify({
+          name: formData.get("word"),
+          definition: formData.get("definition"),
+          exampleSentences: formData.get("example"),
+        }),
       });
 
       if (response.ok) {
         // Handle success - maybe clear the form or show a success message
         alert("Word submitted successfully!");
-        setWord("");
-        setDefinition("");
-        setExample("");
+        router.push(`/`);
       } else {
         // Handle error - maybe show an error message
         alert("Failed to submit word.");
@@ -74,16 +68,21 @@ export default function NewWord() {
             <form className="grid gap-4" onSubmit={handleSubmit}>
               <div className="grid gap-2">
                 <Label htmlFor="word">Word</Label>
-                <Input id="word" placeholder="Enter the word" />
+                <Input name="word" id="word" placeholder="Enter the word" />
               </div>
               <div className="grid gap-2">
                 <Label htmlFor="definition">Definition</Label>
-                <Textarea id="definition" placeholder="Enter the definition" />
+                <Textarea
+                  name="definition"
+                  id="definition"
+                  placeholder="Enter the definition"
+                />
               </div>
               <div className="grid gap-2">
                 <Label htmlFor="example">Example Sentence</Label>
                 <Textarea
                   id="example"
+                  name="example"
                   placeholder="Provide an example sentence"
                 />
               </div>
