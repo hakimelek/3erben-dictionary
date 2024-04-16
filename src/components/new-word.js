@@ -34,16 +34,15 @@ export default function NewWord() {
 
     // Perform the POST request to the server
     try {
-      const response = null;
-      // const response = await fetch(`/api/word`, {
-      //   method: "POST",
-      //   headers: {
-      //     "Content-Type": "application/json",
-      //   },
-      //   body: JSON.stringify(payload),
-      // });
+      const response = await fetch(`${process.env.API_URL}/word`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(payload),
+      });
 
-      if (response?.ok) {
+      if (response.ok) {
         // Handle success - maybe clear the form or show a success message
         alert("Word submitted successfully!");
         setWord("");

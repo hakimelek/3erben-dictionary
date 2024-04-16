@@ -6,9 +6,8 @@ import Link from "next/link";
 export const revalidate = 1; // revalidate at most every hour
 
 async function getWords({ offset, limit }) {
-  console.log("process.env.URL ", process.env.URL);
   const res = await fetch(
-    `${process.env.URL}/api/words?offset=${offset}&limit=${limit}`,
+    `${process.env.API_URL}/words?offset=${offset}&limit=${limit}`,
   );
 
   if (!res?.ok) {

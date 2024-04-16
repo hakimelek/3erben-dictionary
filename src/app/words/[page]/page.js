@@ -7,7 +7,7 @@ export const revalidate = 1; // revalidate at most every hour
 
 async function getWords({ offset, limit, query }) {
   const res = await fetch(
-    `${process.env.URL}/api/words?offset=${offset}&limit=${limit}&query=${query}`,
+    `${process.env.API_URL}/words?offset=${offset}&limit=${limit}&query=${query}`,
   );
 
   if (!res?.ok) {
