@@ -3,6 +3,8 @@ import WordCard from "@/components/wordcard";
 import SideBar from "@/components/sidebar";
 import Link from "next/link";
 
+export const runtime = "edge";
+
 export const revalidate = 1; // revalidate at most every hour
 
 async function getWords({ offset, limit, query }) {
