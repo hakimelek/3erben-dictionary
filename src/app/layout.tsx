@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
 import Link from "next/link";
-import { Input } from "@/components/ui/input";
 import SearchInput from "@/components/searchInput";
 
 const inter = Inter({ subsets: ["latin"] });
@@ -17,9 +16,6 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
-    event.preventDefault();
-  };
   return (
     <html lang="en">
       <body className={inter.className}>

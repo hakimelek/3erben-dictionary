@@ -6,13 +6,14 @@ import Link from "next/link";
 export const revalidate = 1; // revalidate at most every hour
 
 async function getWords({ offset, limit }) {
+  console.log("process.env.URL ", process.env.URL);
   const res = await fetch(
     `${process.env.URL}/api/words?offset=${offset}&limit=${limit}`,
   );
 
-  if (!res.ok) {
+  if (!res?.ok) {
     // This will activate the closest `error.js` Error Boundary
-    throw new Error("Failed to fetch data");
+    console.error("Failed to fetch words");
   }
 
   return res.json();

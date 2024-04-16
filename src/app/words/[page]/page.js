@@ -3,8 +3,6 @@ import WordCard from "@/components/wordcard";
 import SideBar from "@/components/sidebar";
 import Link from "next/link";
 
-export const runtime = "edge";
-
 export const revalidate = 1; // revalidate at most every hour
 
 async function getWords({ offset, limit, query }) {
@@ -12,9 +10,9 @@ async function getWords({ offset, limit, query }) {
     `${process.env.URL}/api/words?offset=${offset}&limit=${limit}&query=${query}`,
   );
 
-  if (!res.ok) {
+  if (!res?.ok) {
     // This will activate the closest `error.js` Error Boundary
-    throw new Error("Failed to fetch data");
+    console.error("Failed to fetch data");
   }
 
   return res.json();
