@@ -5,7 +5,9 @@ import SideBar from "@/components/sidebar";
 export const revalidate = 1; // revalidate at most every hour
 
 async function getRandomWord() {
-  const res = await fetch(`${process.env.API_URL}/word/random`);
+  const res = await fetch(`${process.env.API_URL}/word/random`, {
+    cache: "no-store",
+  });
 
   if (!res?.ok) {
     // This will activate the closest `error.js` Error Boundary
