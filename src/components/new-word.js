@@ -26,17 +26,20 @@ export default function NewWord() {
 
     // Perform the POST request to the server
     try {
-      const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/word`, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
+      const response = await fetch(
+        `${process.env.NEXT_PUBLIC_API_URL}/word/create`,
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            name: formData.get("word"),
+            definition: formData.get("definition"),
+            exampleSentences: formData.get("example"),
+          }),
         },
-        body: JSON.stringify({
-          name: formData.get("word"),
-          definition: formData.get("definition"),
-          exampleSentences: formData.get("example"),
-        }),
-      });
+      );
 
       if (response.ok) {
         // Handle success - maybe clear the form or show a success message
