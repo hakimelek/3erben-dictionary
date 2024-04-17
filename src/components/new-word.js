@@ -53,9 +53,6 @@ export default function NewWord() {
 
   return (
     <div className="grid gap-4 md:grid-cols-[250px_1fr] lg:grid-cols-[300px_1fr]">
-      <div className="hidden flex-col gap-2 md:flex">
-        <SideBar />
-      </div>
       <div className="flex flex-col gap-4">
         <Card>
           <CardHeader>
@@ -92,6 +89,9 @@ export default function NewWord() {
             </form>
           </CardContent>
         </Card>
+      </div>
+      <div className="flex flex-col gap-2 md:order-first">
+        <SideBar />
       </div>
     </div>
   );

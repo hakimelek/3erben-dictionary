@@ -2,6 +2,7 @@ import { Suspense } from "react";
 import WordCard from "@/components/wordcard";
 import SideBar from "@/components/sidebar";
 import Link from "next/link";
+import { Button } from "@/components/ui/button";
 
 export const revalidate = 1; // revalidate at most every hour
 
@@ -43,21 +44,19 @@ export default async function Page({ params: { page }, searchParams }) {
             return <WordCard key={word.name} word={word} />;
           })}
         </Suspense>
-        <div className="grid gap-4 py-3">
+        <div className="flex justify-between py-2">
           {parseInt(page, 10) > 1 && (
             <Link href={`/words/${parseInt(page, 10) - 1}`}>
-              <button className="rounded bg-blue-500 px-4 py-2 font-bold text-white hover:bg-blue-700">
-                Previous
-              </button>
+              <button>Previous</button>
             </Link>
           )}
-          {wordCount === limit && (
-            <Link href={`/words/${parseInt(page, 10) + 1}`}>
-              <button className="rounded bg-blue-500 px-4 py-2 font-bold text-white hover:bg-blue-700">
-                Next
-              </button>
-            </Link>
-          )}
+          <div className="ml-auto">
+            {wordCount === limit && (
+              <Link href={`/words/${parseInt(page, 10) + 1}`}>
+                <button>Next</button>
+              </Link>
+            )}
+          </div>
         </div>
       </div>
     </div>

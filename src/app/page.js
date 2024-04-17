@@ -2,6 +2,7 @@ import { Suspense } from "react";
 import WordCard from "@/components/wordcard";
 import SideBar from "@/components/sidebar";
 import Link from "next/link";
+import { Button } from "@/components/ui/input";
 
 export const revalidate = 1; // revalidate at most every hour
 
@@ -26,20 +27,20 @@ export default async function Page() {
 
   return (
     <div className="grid gap-4 md:grid-cols-[250px_1fr] lg:grid-cols-[300px_1fr]">
-      <div className="flex flex-col gap-2">
-        <SideBar />
-      </div>
       <div className="flex flex-col gap-4">
         <Suspense fallback={<div>Loading...</div>}>
           {words.map((word) => {
             return <WordCard key={word.name} word={word} />;
           })}
         </Suspense>
-        <Link href={`/words/2`}>
-          <button className="rounded bg-blue-500 px-4 py-2 font-bold text-white hover:bg-blue-700">
-            Next
-          </button>
-        </Link>
+        <div className="ml-auto">
+          <Link href={`/words/2`}>
+            <button>Next</button>
+          </Link>
+        </div>
+      </div>
+      <div className="flex flex-col gap-2 md:order-first">
+        <SideBar />
       </div>
     </div>
   );
