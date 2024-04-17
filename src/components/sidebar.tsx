@@ -24,7 +24,7 @@ const SideBar = () => {
           </Link>
         </CardContent>
       </Card>
-      <Card>
+      <Card className="hidden md:block">
         <CardHeader>
           <CardTitle>Top Words</CardTitle>
           <CardDescription>

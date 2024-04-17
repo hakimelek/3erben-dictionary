@@ -34,15 +34,17 @@ export default async function Page({ params: { page }, searchParams }) {
 
   return (
     <div className="grid gap-4 md:grid-cols-[250px_1fr] lg:grid-cols-[300px_1fr]">
-      <div className="flex flex-col gap-2">
-        <SideBar />
-      </div>
-
       <div className="flex flex-col gap-4">
         <Suspense fallback={<div>Loading...</div>}>
           {words.map((word) => {
             return <WordCard key={word.name} word={word} />;
           })}
+
+          {wordCount === 0 && (
+            <div className="p-4 pb-3.5 text-center">
+              <p>No words found</p>
+            </div>
+          )}
         </Suspense>
         <div className="flex justify-between py-2">
           {parseInt(page, 10) > 1 && (
@@ -58,6 +60,9 @@ export default async function Page({ params: { page }, searchParams }) {
             )}
           </div>
         </div>
+      </div>
+      <div className="flex flex-col gap-2 md:order-first">
+        <SideBar />
       </div>
     </div>
   );

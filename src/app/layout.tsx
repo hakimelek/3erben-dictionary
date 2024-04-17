@@ -25,7 +25,7 @@ export default function RootLayout({
         >
           <header className="flex flex-col justify-center space-y-2 md:flex-row md:items-center md:space-x-4 md:space-y-0">
             <Link
-              className="flex items-center gap-2 text-xl font-bold md:text-2xl"
+              className="text-l flex items-center gap-2 font-bold md:text-3xl"
               href="/"
             >
               3erben Dictionary
