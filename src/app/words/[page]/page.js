@@ -4,11 +4,12 @@ import SideBar from "@/components/sidebar";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 
-export const revalidate = 1; // revalidate at most every hour
+export const revalidate = 1;
 
 async function getWords({ offset, limit, query }) {
   const res = await fetch(
     `${process.env.API_URL}/words?offset=${offset}&limit=${limit}&query=${query}`,
+    { cache: "no-store" },
   );
 
   if (!res?.ok) {

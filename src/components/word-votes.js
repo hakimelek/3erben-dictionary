@@ -1,67 +1,78 @@
 "use client";
 import { Button } from "@/components/ui/button";
-import { useOptimistic } from "react";
+import { useOptimistic, startTransition, useState } from "react";
 
-const WordVotes = (word) => {
+const WordVotes = ({ word }) => {
+  const [likes, setLikes] = useState(word?.likes || 0);
+  const [dislikes, setDislikes] = useState(word?.dislikes || 0);
+
   const [optimisticLikeVotes, addoptimisticLikeVotes] = useOptimistic(
-    word?.likes || 0, // Default to 0 likes if null
-    (state, l) => state + 1,
+    likes || 0, // Default to 0 likes if null
+    (state, newVote) => state + newVote,
   );
   const [optimisticDislikeVotes, addoptimisticDislikeVotes] = useOptimistic(
-    word?.dislikes || 0, // Default to 0 dislikes if null
-    (state, l) => state + 1,
+    dislikes || 0, // Default to 0 dislikes if null
+    (state, newVote) => state + newVote,
   );
 
   const like = async () => {
-    addoptimisticLikeVotes(1); // Optimistically increment the like count
+    startTransition(async () => {
+      addoptimisticLikeVotes(1); // Optimistically increment the like count
 
-    console.log('id: word.id, action: "like"', word);
-    const response = await fetch(
-      `${process.env.NEXT_PUBLIC_API_URL}/word/vote`,
-      {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
+      const response = await fetch(
+        `${process.env.NEXT_PUBLIC_API_URL}/word/vote`,
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ id: word.id, action: "like" }),
         },
-        body: JSON.stringify({ id: word.id, action: "like" }),
-      },
-    );
+      );
 
-    if (response.ok) {
-      // Handle success - maybe clear the form or show a success message
-    } else {
-      // Handle error - maybe show an error message
-    }
+      if (response.ok) {
+        // Handle success - maybe clear the form or show a success message
+        const newWord = await response.json();
+        setLikes(newWord.likes);
+        setDislikes(newWord.dislikes);
+      } else {
+        // Handle error - maybe show an error message
+      }
+    });
   };
 
   const dislike = async () => {
-    addoptimisticDislikeVotes(1);
+    startTransition(async () => {
+      addoptimisticDislikeVotes(1);
 
-    const response = await fetch(
-      `${process.env.NEXT_PUBLIC_API_URL}/word/vote`,
-      {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
+      const response = await fetch(
+        `${process.env.NEXT_PUBLIC_API_URL}/word/vote`,
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ id: word.id, action: "dislike" }),
         },
-        body: JSON.stringify({ id: word.id, action: "dislike" }),
-      },
-    );
+      );
 
-    if (response.ok) {
-      // Handle success - maybe clear the form or show a success message
-    } else {
-      // Handle error - maybe show an error message
-    }
+      if (response.ok) {
+        const newWord = await response.json();
+        setLikes(newWord.likes);
+        setDislikes(newWord.dislikes);
+      } else {
+        // Handle error - maybe show an error message
+      }
+    });
   };
 
   return (
     <div className="flex items-center gap-2">
       <Button onClick={like} size="sm" variant="outline">
-        👍 {word?.likes || 0}
+        👍 {optimisticLikeVotes || 0}
       </Button>
       <Button onClick={dislike} size="sm" variant="outline">
-        👎 {word?.dislikes || 0}
+        👎 {optimisticDislikeVotes || 0}
       </Button>
     </div>
   );

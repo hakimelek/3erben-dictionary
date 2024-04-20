@@ -7,6 +7,7 @@ import {
 } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
+import TopWords from "@/components/top-words";
 
 const SideBar = () => {
   return (
@@ -24,23 +25,7 @@ const SideBar = () => {
           </Link>
         </CardContent>
       </Card>
-      <Card className="hidden md:block">
-        <CardHeader>
-          <CardTitle>Top Words</CardTitle>
-          <CardDescription>
-            The most searched words in the dictionary.
-          </CardDescription>
-        </CardHeader>
-        <CardContent className="p-4">
-          <ol className="grid list-decimal gap-2 pl-6">
-            <li className="font-semibold">3erben</li>
-            <li>Chbik</li>
-            <li>Weld el 9a7ba</li>
-            <li>Bouk</li>
-            <li>7alouf</li>
-          </ol>
-        </CardContent>
-      </Card>
+      <TopWords />
     </div>
   );
 };

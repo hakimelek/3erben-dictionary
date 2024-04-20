@@ -7,26 +7,28 @@ import {
   CardFooter,
 } from "@/components/ui/card";
 import WorkVotes from "@/components/word-votes";
+import Link from "next/link";
 
-interface WordProps {
-  word: {
-    id: string;
-    name: string;
-    definition: string;
-    exampleSentences?: string[]; // assumed optional and array of strings
-    likes: number;
-    dislikes: number;
-  };
-}
+const WordCard = ({ word, noLink }) => {
+  const { name, definition, exampleSentences, isTop } = word;
 
-const WordCard: React.FC<WordProps> = ({ word }) => {
-  const { id, name, definition, exampleSentences } = word;
+  const topFlag = isTop ? "🔥" : "";
 
   return (
     <div className="w-full">
       <Card>
         <CardHeader>
-          <CardTitle className="text-blue-300">{name}</CardTitle>
+          {noLink ? (
+            <CardTitle className="text-blue-300">
+              {name} {topFlag}
+            </CardTitle>
+          ) : (
+            <Link href={`/word/${word.id}`}>
+              <CardTitle className="text-blue-300">
+                {name} {topFlag}
+              </CardTitle>
+            </Link>
+          )}
           <CardDescription className="text-lg text-gray-900 dark:text-gray-100">
             {definition}
           </CardDescription>
