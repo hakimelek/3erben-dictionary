@@ -4,7 +4,7 @@ import SideBar from "@/components/sidebar";
 import { Button } from "@/components/ui/button";
 
 async function getRandomWord() {
-  const res = await fetch(`${process.env.API_URL}/word/random`, {
+  const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/word/random`, {
     cache: "no-store",
   });
 

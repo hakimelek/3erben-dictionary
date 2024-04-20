@@ -2,8 +2,8 @@ import { Suspense } from "react";
 import WordCard from "@/components/wordcard";
 import SideBar from "@/components/sidebar";
 
-async function getWord(id: string) {
-  const res = await fetch(`${process.env.API_URL}/word/${id}`, {
+async function getWord(id) {
+  const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/word/${id}`, {
     cache: "no-store",
   });
 
@@ -15,7 +15,7 @@ async function getWord(id: string) {
   return res.json();
 }
 
-export default async function Page({ params }: { params: { id: string } }) {
+export default async function Page({ params }) {
   const word = await getWord(params.id);
 
   return (

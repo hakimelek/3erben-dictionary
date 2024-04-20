@@ -8,7 +8,7 @@ export const revalidate = 1;
 
 async function getWords({ offset, limit, query }) {
   const res = await fetch(
-    `${process.env.API_URL}/words?offset=${offset}&limit=${limit}&query=${query}`,
+    `${process.env.NEXT_PUBLIC_API_URL}/words?offset=${offset}&limit=${limit}&query=${query}`,
     { cache: "no-store" },
   );
 
