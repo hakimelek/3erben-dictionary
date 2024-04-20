@@ -1,7 +1,6 @@
 import { Suspense } from "react";
 import WordCard from "@/components/wordcard";
 import SideBar from "@/components/sidebar";
-import { Button } from "@/components/ui/button";
 
 async function getWord(id: string) {
   const res = await fetch(`${process.env.API_URL}/word/${id}`, {
