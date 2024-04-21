@@ -5,6 +5,7 @@ import {
   CardContent,
   Card,
 } from "@/components/ui/card";
+import Link from "next/link";
 
 async function getTopWords({ limit }) {
   const res = await fetch(
@@ -35,7 +36,10 @@ const TopWords = async () => {
       <CardContent className="px-4">
         <ol className="grid list-decimal gap-2 pl-6">
           {topWords.map((word) => (
-            <li key={word.id}>{word.name}</li>
+            <li key={word.id}>
+              {" "}
+              <Link href={`/word/${word.id}`}>{word.name}</Link>
+            </li>
           ))}
         </ol>
       </CardContent>
