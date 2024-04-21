@@ -43,7 +43,9 @@ export default function NewWord() {
 
       if (response.ok) {
         // Handle success - maybe clear the form or show a success message
-        alert("Word submitted successfully!");
+        alert(
+          "Thank you for your contribution! Your word will show up in the next 48 hours if approved",
+        );
         router.push(`/`);
       } else {
         // Handle error - maybe show an error message

@@ -9,7 +9,7 @@ async function getWord(id) {
 
   if (!res?.ok) {
     // This will activate the closest `error.js` Error Boundary
-    console.error("Failed to fetch data");
+    // console.error("Failed to fetch data");
   }
 
   return res.json();
@@ -17,12 +17,15 @@ async function getWord(id) {
 
 export default async function Page({ params }) {
   const word = await getWord(params.id);
-
   return (
     <div className="grid gap-4 md:grid-cols-[250px_1fr] lg:grid-cols-[300px_1fr]">
       <div className="flex flex-col gap-4">
         <Suspense fallback={<div>Loading...</div>}>
-          <WordCard key={word.name} word={word} />
+          {!word.error ? (
+            <WordCard key={word.name} word={word} />
+          ) : (
+            <div className="flex p-5 align-middle">No such word found</div>
+          )}
         </Suspense>
       </div>
       <div className="flex flex-col gap-2 md:order-first">
