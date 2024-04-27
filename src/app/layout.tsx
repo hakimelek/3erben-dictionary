@@ -28,7 +28,7 @@ export default function RootLayout({
               className="text-l flex items-center gap-2 font-bold md:text-3xl"
               href="/"
             >
-              3erben Dictionary
+              3erben Dictionary 🇹🇳
             </Link>
             <nav className="flex items-center gap-4">
               <Link className="font-medium underline" href="/new">
