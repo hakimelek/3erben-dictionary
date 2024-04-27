@@ -7,7 +7,7 @@ import SearchInput from "@/components/searchInput";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "3erben Dictionary - The dictionary for the 3erbens",
+  title: "3urban Dictionary - The dictionary bel Gejmi",
   description: "Tunisian slang dictionary",
 };
 
