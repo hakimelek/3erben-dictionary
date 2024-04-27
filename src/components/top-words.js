@@ -31,7 +31,7 @@ const TopWords = async () => {
   return (
     <Card className="hidden md:block">
       <CardHeader>
-        <CardTitle>Top Words</CardTitle>
+        <CardTitle>Top Words 🔥</CardTitle>
       </CardHeader>
       <CardContent className="px-4">
         <ol className="grid list-decimal gap-2 pl-6">
