@@ -11,7 +11,8 @@ const Tags = async () => {
   const categories = [
     { slug: "nes-bkri", name: "Nes Bekri Kalou" },
     { slug: "animals", name: "7ayawenet" },
-    { slug: "18", name: "Ghacha +18" },
+    { slug: "ghacha", name: "Ghacha (+18)" },
+    { slug: "nsfw", name: "Mouch 9oddem Bouk (+18)" },
   ];
   return (
     <Card className="hidden md:block">

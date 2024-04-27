@@ -81,7 +81,12 @@ export default function SuggestWordChange({ word }) {
                   Word: <strong>{word.name}</strong>
                 </p>
                 <p className="text-md">
-                  Definition: <strong>{word.definition}</strong>
+                  Definition:{" "}
+                  {word.definition ? (
+                    <strong>{word.definition}</strong>
+                  ) : (
+                    <i>Need definition</i>
+                  )}
                 </p>
                 {word.exampleSentences.length > 0 && (
                   <div className="text-md">

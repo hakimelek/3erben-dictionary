@@ -6,9 +6,9 @@ import { Button } from "@/components/ui/button";
 
 export const revalidate = 1;
 
-async function getWords({ offset, limit, query }) {
+async function getWords({ offset, limit, query, tags, startsWith }) {
   const res = await fetch(
-    `${process.env.NEXT_PUBLIC_API_URL}/words?offset=${offset}&limit=${limit}&query=${query}`,
+    `${process.env.NEXT_PUBLIC_API_URL}/words?offset=${offset}&limit=${limit}&query=${query}&tags=${tags}&startsWith=${startsWith}`,
     { cache: "no-store" },
   );
 
@@ -23,12 +23,16 @@ async function getWords({ offset, limit, query }) {
 export default async function Page({ params: { page }, searchParams }) {
   const pageNum = page ? parseInt(page, 10) : 1;
   const limit = 15;
-  const { query } = searchParams;
+  const { query, tags, startsWith } = searchParams;
+
+  const params = new URLSearchParams(searchParams).toString();
 
   const words = await getWords({
     offset: 0 + (pageNum - 1) * 15,
     limit,
     query: query || "",
+    tags: tags || "",
+    startsWith: startsWith || "",
   });
 
   const wordCount = words.length;
@@ -49,13 +53,13 @@ export default async function Page({ params: { page }, searchParams }) {
         </Suspense>
         <div className="flex justify-between py-2">
           {parseInt(page, 10) > 1 && (
-            <Link href={`/words/${parseInt(page, 10) - 1}`}>
+            <Link href={`/words/${parseInt(page, 10) - 1}?${params}`}>
               <button>Previous</button>
             </Link>
           )}
           <div className="ml-auto">
             {wordCount === limit && (
-              <Link href={`/words/${parseInt(page, 10) + 1}`}>
+              <Link href={`/words/${parseInt(page, 10) + 1}?${params}`}>
                 <button>Next</button>
               </Link>
             )}

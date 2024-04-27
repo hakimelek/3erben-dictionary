@@ -31,6 +31,7 @@ const WordCard = ({ word, noLink }) => {
           )}
           <CardDescription className="text-lg text-gray-900 dark:text-gray-100">
             {definition}
+            <i>{!definition && "Need definition"}</i>
           </CardDescription>
         </CardHeader>
         <CardContent>
