@@ -21,7 +21,7 @@ export default function RootLayout({
       <body className={inter.className}>
         <div
           key="1"
-          className="mx-auto grid w-full max-w-6xl gap-4 px-4 py-2 md:px-6"
+          className="mx-auto grid w-full max-w-6xl gap-4 px-4 py-3 md:px-6"
         >
           <header className="flex flex-col justify-center space-y-2 md:flex-row md:items-center md:space-x-4 md:space-y-0">
             <Link

@@ -29,7 +29,7 @@ const WordCard = ({ word, noLink }) => {
               </CardTitle>
             </Link>
           )}
-          <CardDescription className="text-lg text-gray-900 dark:text-gray-100">
+          <CardDescription className="text-lg text-gray-900 dark:text-gray-100" style={{ whiteSpace: 'pre-wrap' }}>
             {definition}
             <i>{!definition && "Need definition"}</i>
           </CardDescription>
