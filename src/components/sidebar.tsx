@@ -9,6 +9,7 @@ import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import TopWords from "@/components/top-words";
 import Tags from "@/components/tags";
+import Alphabets from "@/components/alphabets";
 
 const SideBar = () => {
   return (
@@ -29,7 +30,10 @@ const SideBar = () => {
       <div className="mb-4">
         <TopWords />
       </div>
-      <Tags />
+      <div className="mb-4">
+        <Tags />
+      </div>
+      <Alphabets />
     </div>
   );
 };
