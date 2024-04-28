@@ -68,10 +68,10 @@ const WordVotes = ({ word }) => {
 
   return (
     <div className="flex items-center gap-2">
-      <Button onClick={like} size="sm" variant="outline">
+      <Button onClick={like} size="xs" variant="outline" className="p-1">
         👍 {optimisticLikeVotes || 0}
       </Button>
-      <Button onClick={dislike} size="sm" variant="outline">
+      <Button onClick={dislike} size="xs" variant="outline" className="p-1">
         👎 {optimisticDislikeVotes || 0}
       </Button>
     </div>

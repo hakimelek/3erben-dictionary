@@ -1,9 +1,8 @@
 const TAGS = [
-  { slug: "nes-bkri", name: "Nes Bekri Kalou" },
-  { slug: "nsfw", name: "Mouch 9oddem Bouk (+18)" },
+  { slug: "nsfw", name: "Mouch 9oddem Bouk 🔞" },
   { slug: "animals", name: "7ayawenet" },
-  { slug: "names", name: "Names (+18)" },
-  { slug: "ghacha", name: "Ghacha (+18)" },
+  { slug: "names", name: "Names 🔞" },
+  { slug: "ghacha", name: "Ghacha 🔞" },
   { slug: "sayings", name: "Akwel machhoura" },
 ];
 

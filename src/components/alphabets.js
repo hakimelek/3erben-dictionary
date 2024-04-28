@@ -55,7 +55,7 @@ const Alphabets = async () => {
       <CardContent className="px-4">
         <ol className="grid grid-cols-6 gap-2 pl-3 list-decimal">
           {alphabets.map((letter) => (
-            <li key={letter.slug} className="flex">
+            <li key={letter.slug} className="flex justify-center">
               <Link
                 href={`/words/1?startsWith=${letter.slug}`}
                 className="hover:underline"

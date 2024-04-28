@@ -28,11 +28,7 @@ const WordCard = ({ word, noLink }) => {
                   {name} {topFlag}
                 </Link>
               )}
-              {nsfwFlag && (
-                <div className="bg-white text-black rounded-full w-6 h-6 flex items-center justify-center text-xs -pl-2">
-                  +18
-                </div>
-              )}
+              {nsfwFlag && <div className="flex text-base -pl-2">🔞</div>}
             </div>
           </CardTitle>
 
@@ -74,7 +70,7 @@ const WordCard = ({ word, noLink }) => {
                   viewBox="0 0 24 24"
                   strokeWidth={1.5}
                   stroke="currentColor"
-                  className="w-5 h-5"
+                  className="w-4 h-4"
                 >
                   <path
                     strokeLinecap="round"
@@ -93,7 +89,7 @@ const WordCard = ({ word, noLink }) => {
                   viewBox="0 0 24 24"
                   strokeWidth={1.5}
                   stroke="currentColor"
-                  className="w-5 h-5"
+                  className="w-4 h-4"
                 >
                   <path
                     strokeLinecap="round"
