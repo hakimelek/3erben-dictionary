@@ -10,26 +10,36 @@ import WorkVotes from "@/components/word-votes";
 import Link from "next/link";
 
 const WordCard = ({ word, noLink }) => {
-  const { name, definition, exampleSentences, isTop } = word;
+  const { name, definition, exampleSentences, isTop, tags } = word;
 
   const topFlag = isTop ? "🔥" : "";
+  const nsfwFlag = tags.includes("nsfw");
 
   return (
     <div className="w-full">
       <Card>
         <CardHeader>
-          {noLink ? (
-            <CardTitle className="text-blue-500 hover:text-blue-700 transition-colors duration-150 ease-in-out">
-              {name} {topFlag}
-            </CardTitle>
-          ) : (
-            <Link href={`/word/${word.id}`}>
-              <CardTitle className="text-blue-500 hover:text-blue-700 transition-colors duration-150 ease-in-out">
-                {name} {topFlag}
-              </CardTitle>
-            </Link>
-          )}
-          <CardDescription className="text-lg text-gray-900 dark:text-gray-100" style={{ whiteSpace: 'pre-wrap' }}>
+          <CardTitle className="text-blue-500 hover:text-blue-700 transition-colors duration-150 ease-in-out">
+            <div className="flex justify-between items-center w-full">
+              {noLink ? (
+                `${name} ${topFlag}`
+              ) : (
+                <Link href={`/word/${word.id}`}>
+                  {name} {topFlag}
+                </Link>
+              )}
+              {nsfwFlag && (
+                <div className="bg-white text-black rounded-full w-6 h-6 flex items-center justify-center text-xs -pl-2">
+                  +18
+                </div>
+              )}
+            </div>
+          </CardTitle>
+
+          <CardDescription
+            className="text-lg text-gray-900 dark:text-gray-100"
+            style={{ whiteSpace: "pre-wrap" }}
+          >
             {definition}
             <i>{!definition && "Need definition"}</i>
           </CardDescription>

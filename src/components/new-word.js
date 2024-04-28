@@ -13,6 +13,7 @@ import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import SideBar from "./sidebar";
 import { useRouter } from "next/navigation";
+import { TAGS } from "@/lib/constants";
 
 export default function NewWord() {
   const router = useRouter();
@@ -37,6 +38,7 @@ export default function NewWord() {
             name: formData.get("word"),
             definition: formData.get("definition"),
             exampleSentences: formData.get("example"),
+            tags: formData.getAll("tags").join(","),
           }),
         },
       );
@@ -86,6 +88,30 @@ export default function NewWord() {
                   id="example"
                   name="example"
                   placeholder="Provide an example sentence"
+                />
+              </div>
+
+              <div className="grid gap-2">
+                <Label htmlFor="tags">Tags</Label>
+                <div className="grid gap-2">
+                  {TAGS.map((tag) => (
+                    <div key={tag.slug}>
+                      <input
+                        type="checkbox"
+                        id={tag.slug}
+                        name="tags"
+                        value={tag.slug}
+                      />
+                      <label className="pl-2" htmlFor={tag.slug}>
+                        {tag.name}
+                      </label>
+                    </div>
+                  ))}
+                </div>
+                <Input
+                  name="tags"
+                  id="tags"
+                  placeholder="Enter additional tags, comma separated"
                 />
               </div>
               <Button className="w-full" type="submit">

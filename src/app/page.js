@@ -2,7 +2,7 @@ import { Suspense } from "react";
 import WordCard from "@/components/wordcard";
 import SideBar from "@/components/sidebar";
 import Link from "next/link";
-import { Button } from "@/components/ui/input";
+import { Button } from "@/components/ui/button";
 
 export const revalidate = 1; // revalidate at most every hour
 
@@ -35,7 +35,9 @@ export default async function Page() {
         </Suspense>
         <div className="ml-auto">
           <Link href={`/words/2`}>
-            <button>Next</button>
+            <Button variant="secondary" className="min-w-20">
+              Next
+            </Button>
           </Link>
         </div>
       </div>

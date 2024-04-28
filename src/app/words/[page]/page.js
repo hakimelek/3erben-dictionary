@@ -54,13 +54,17 @@ export default async function Page({ params: { page }, searchParams }) {
         <div className="flex justify-between py-2">
           {parseInt(page, 10) > 1 && (
             <Link href={`/words/${parseInt(page, 10) - 1}?${params}`}>
-              <button>Previous</button>
+              <Button variant="secondary" className="min-w-20">
+                Previous
+              </Button>
             </Link>
           )}
           <div className="ml-auto">
             {wordCount === limit && (
               <Link href={`/words/${parseInt(page, 10) + 1}?${params}`}>
-                <button>Next</button>
+                <Button variant="secondary" className="min-w-20">
+                  Next
+                </Button>
               </Link>
             )}
           </div>

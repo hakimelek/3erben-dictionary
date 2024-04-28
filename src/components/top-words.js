@@ -23,7 +23,7 @@ const TopWords = async () => {
   });
 
   return (
-    <Card className="hidden md:block">
+    <Card>
       <CardHeader>
         <CardTitle>Top Words 🔥</CardTitle>
       </CardHeader>

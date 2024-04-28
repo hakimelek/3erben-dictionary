@@ -48,12 +48,12 @@ const Alphabets = async () => {
   ];
 
   return (
-    <Card className="hidden md:block">
+    <Card>
       <CardHeader>
         <CardTitle>By Letters</CardTitle>
       </CardHeader>
       <CardContent className="px-4">
-        <ol className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-2 pl-6 list-decimal">
+        <ol className="grid grid-cols-6 gap-2 pl-3 list-decimal">
           {alphabets.map((letter) => (
             <li key={letter.slug} className="flex">
               <Link
