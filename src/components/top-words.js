@@ -5,7 +5,9 @@ async function getTopWords({ limit }) {
   const res = await fetch(
     `${process.env.NEXT_PUBLIC_API_URL}/words/top?limit=${limit}`,
     {
-      cache: "no-store",
+      next: {
+        revalidate: 60, // 1 minute
+      },
     },
   );
 
