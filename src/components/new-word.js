@@ -59,71 +59,66 @@ export default function NewWord() {
   };
 
   return (
-    <div className="grid gap-4 md:grid-cols-[250px_1fr] lg:grid-cols-[300px_1fr]">
-      <div className="flex flex-col gap-4">
-        <Card>
-          <CardHeader>
-            <CardTitle>Add a New Word</CardTitle>
-            <CardDescription>
-              Contribute to the 3erben Dictionary by adding a new word.
-            </CardDescription>
-          </CardHeader>
-          <CardContent>
-            <form className="grid gap-4" onSubmit={handleSubmit}>
-              <div className="grid gap-2">
-                <Label htmlFor="word">Word</Label>
-                <Input name="word" id="word" placeholder="Enter the word" />
-              </div>
-              <div className="grid gap-2">
-                <Label htmlFor="definition">Definition</Label>
-                <Textarea
-                  name="definition"
-                  id="definition"
-                  placeholder="Enter the definition"
-                />
-              </div>
-              <div className="grid gap-2">
-                <Label htmlFor="example">Example Sentence</Label>
-                <Textarea
-                  id="example"
-                  name="example"
-                  placeholder="Provide an example sentence"
-                />
-              </div>
+    <div>
+      <Card>
+        <CardHeader>
+          <CardTitle>Add a New Word</CardTitle>
+          <CardDescription>
+            Contribute to the 3erben Dictionary by adding a new word.
+          </CardDescription>
+        </CardHeader>
+        <CardContent>
+          <form className="grid gap-4" onSubmit={handleSubmit}>
+            <div className="grid gap-2">
+              <Label htmlFor="word">Word</Label>
+              <Input name="word" id="word" placeholder="Enter the word" />
+            </div>
+            <div className="grid gap-2">
+              <Label htmlFor="definition">Definition</Label>
+              <Textarea
+                name="definition"
+                id="definition"
+                placeholder="Enter the definition"
+              />
+            </div>
+            <div className="grid gap-2">
+              <Label htmlFor="example">Example Sentence</Label>
+              <Textarea
+                id="example"
+                name="example"
+                placeholder="Provide an example sentence"
+              />
+            </div>
 
+            <div className="grid gap-2">
+              <Label htmlFor="tags">Tags</Label>
               <div className="grid gap-2">
-                <Label htmlFor="tags">Tags</Label>
-                <div className="grid gap-2">
-                  {TAGS.map((tag) => (
-                    <div key={tag.slug}>
-                      <input
-                        type="checkbox"
-                        id={tag.slug}
-                        name="tags"
-                        value={tag.slug}
-                      />
-                      <label className="pl-2" htmlFor={tag.slug}>
-                        {tag.name}
-                      </label>
-                    </div>
-                  ))}
-                </div>
-                <Input
-                  name="tags"
-                  id="tags"
-                  placeholder="Enter additional tags, comma separated"
-                />
+                {TAGS.map((tag) => (
+                  <div key={tag.slug}>
+                    <input
+                      type="checkbox"
+                      id={tag.slug}
+                      name="tags"
+                      value={tag.slug}
+                    />
+                    <label className="pl-2" htmlFor={tag.slug}>
+                      {tag.name}
+                    </label>
+                  </div>
+                ))}
               </div>
-              <Button className="w-full" type="submit">
-                Submit Word
-              </Button>
-            </form>
-          </CardContent>
-        </Card>
-      </div>
-      <div className="flex flex-col gap-2 md:order-first">
-        <SideBar />
-      </div>
+              <Input
+                name="tags"
+                id="tags"
+                placeholder="Enter additional tags, comma separated"
+              />
+            </div>
+            <Button className="w-full" type="submit">
+              Submit Word
+            </Button>
+          </form>
+        </CardContent>
+      </Card>
     </div>
   );
 }
