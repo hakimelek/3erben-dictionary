@@ -37,7 +37,7 @@ const WordCard = ({ word, noLink }) => {
             style={{ whiteSpace: "pre-wrap" }}
           >
             {definition}
-            <i>{!definition && "Need definition"}</i>
+            <i>{!definition && "Needs definition, please suggest one"}</i>
           </CardDescription>
         </CardHeader>
         <CardContent>
