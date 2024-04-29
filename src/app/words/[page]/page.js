@@ -6,9 +6,11 @@ import { Button } from "@/components/ui/button";
 
 export const revalidate = 1;
 
-async function getWords({ offset, limit, query, tags, startsWith }) {
+async function getWords(options) {
+  const params = new URLSearchParams(options).toString();
+
   const res = await fetch(
-    `${process.env.NEXT_PUBLIC_API_URL}/words?offset=${offset}&limit=${limit}&query=${query}&tags=${tags}&startsWith=${startsWith}`,
+    `${process.env.NEXT_PUBLIC_API_URL}/words?${params}`,
     { cache: "no-store" },
   );
 
@@ -23,17 +25,32 @@ async function getWords({ offset, limit, query, tags, startsWith }) {
 export default async function Page({ params: { page }, searchParams }) {
   const pageNum = page ? parseInt(page, 10) : 1;
   const limit = 15;
-  const { query, tags, startsWith } = searchParams;
+  const { query, tags, startsWith, allowNsfw } = searchParams;
+
+  let options = {
+    offset: 0 + (pageNum - 1) * 15,
+    limit,
+  };
+
+  if (query) {
+    options.query = query || "";
+  }
+
+  if (allowNsfw) {
+    options.allowNsfw = allowNsfw;
+  }
+
+  if (tags) {
+    options.tags = tags || "";
+  }
+
+  if (startsWith) {
+    options.startsWith = startsWith || "";
+  }
 
   const params = new URLSearchParams(searchParams).toString();
 
-  const words = await getWords({
-    offset: 0 + (pageNum - 1) * 15,
-    limit,
-    query: query || "",
-    tags: tags || "",
-    startsWith: startsWith || "",
-  });
+  const words = await getWords(options);
 
   const wordCount = words.length;
 

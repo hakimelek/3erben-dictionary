@@ -28,12 +28,12 @@ export default async function Page() {
         <div className="w-full">
           <form>
             <Button className="w-full" variant="outline" type="submit">
-              Random New Word
+              Give me a new word
             </Button>
           </form>
         </div>
       </div>
-      <div className="flex flex-col gap-2 md:order-first">
+      <div className="md:flex  flex-col gap-2 md:order-first hidden">
         <SideBar />
       </div>
     </div>

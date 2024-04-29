@@ -27,7 +27,7 @@ const TopWords = async () => {
   return (
     <Card>
       <CardHeader>
-        <CardTitle>Top Words 🔥</CardTitle>
+        <CardTitle>Trending</CardTitle>
       </CardHeader>
       <CardContent className="px-4">
         <ol className="grid list-decimal gap-2 pl-6">

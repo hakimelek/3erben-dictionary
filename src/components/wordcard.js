@@ -12,7 +12,26 @@ import Link from "next/link";
 const WordCard = ({ word, noLink }) => {
   const { name, definition, exampleSentences, isTop, tags } = word;
 
-  const topFlag = isTop ? "🔥" : "";
+  const topFlag = isTop ? (
+    <div className="px-2">
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        fill="none"
+        viewBox="0 0 24 24"
+        strokeWidth={1.5}
+        stroke="currentColor"
+        className="w-6 h-6"
+      >
+        <path
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          d="M2.25 18 9 11.25l4.306 4.306a11.95 11.95 0 0 1 5.814-5.518l2.74-1.22m0 0-5.94-2.281m5.94 2.28-2.28 5.941"
+        />
+      </svg>
+    </div>
+  ) : (
+    ""
+  );
   const nsfwFlag = tags.includes("nsfw");
 
   return (
@@ -20,12 +39,14 @@ const WordCard = ({ word, noLink }) => {
       <Card>
         <CardHeader>
           <CardTitle className="text-blue-500 hover:text-blue-700 transition-colors duration-150 ease-in-out">
-            <div className="flex justify-between items-center w-full">
+            <div className="flex flex-row justify-between items-center w-full">
               {noLink ? (
                 `${name} ${topFlag}`
               ) : (
                 <Link href={`/word/${word.id}`}>
-                  {name} {topFlag}
+                  <div className="flex flex-row">
+                    {name} {topFlag}
+                  </div>
                 </Link>
               )}
               {nsfwFlag && <div className="flex text-base -pl-2">🔞</div>}
