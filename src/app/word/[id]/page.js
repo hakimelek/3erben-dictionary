@@ -28,7 +28,7 @@ export default async function Page({ params }) {
           )}
         </Suspense>
       </div>
-      <div className="flex flex-col gap-2 md:order-first">
+      <div className="md:flex hidden flex-col gap-2 md:order-first">
         <SideBar />
       </div>
     </div>
