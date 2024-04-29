@@ -1,7 +1,7 @@
 import { Suspense } from "react";
 import WordCard from "@/components/wordcard";
 import SideBar from "@/components/sidebar";
-import { Button } from "@/components/ui/button";
+import RefreshButtonRandomWord from "@/components/refreshButtonRandomWord";
 
 async function getRandomWord() {
   const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/word/random`, {
@@ -26,11 +26,7 @@ export default async function Page() {
           <WordCard key={word.name} word={word} noLink />
         </Suspense>
         <div className="w-full">
-          <form>
-            <Button className="w-full" variant="outline" type="submit">
-              Give me a new word
-            </Button>
-          </form>
+          <RefreshButtonRandomWord />
         </div>
       </div>
       <div className="md:flex  flex-col gap-2 md:order-first hidden">
