@@ -5,6 +5,7 @@ import Link from "next/link";
 import SearchInput from "@/components/searchInput";
 import Provider from "@/components/provider";
 import ContextSwitcher from "@/components/contextSwitcher";
+import { Analytics } from "@vercel/analytics/react"
 
 const inter = Inter({ subsets: ["latin"] });
 
