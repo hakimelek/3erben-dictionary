@@ -5,7 +5,7 @@ import Link from "next/link";
 import SearchInput from "@/components/searchInput";
 import Provider from "@/components/provider";
 import ContextSwitcher from "@/components/contextSwitcher";
-import { Analytics } from "@vercel/analytics/react"
+import { Analytics } from "@vercel/analytics/react";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -26,6 +26,7 @@ export default function RootLayout({
           name="viewport"
           content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"
         />
+        <Analytics />
       </head>
       <Provider>
         <body
