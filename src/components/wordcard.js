@@ -8,9 +8,18 @@ import {
 } from "@/components/ui/card";
 import WorkVotes from "@/components/word-votes";
 import Link from "next/link";
+import { formatDistanceToNow } from "date-fns";
 
 const WordCard = ({ word, noLink }) => {
-  const { name, definition, exampleSentences, isTop, tags } = word;
+  const {
+    name,
+    definition,
+    exampleSentences,
+    isTop,
+    tags,
+    createdAt,
+    ownerId,
+  } = word;
 
   const topFlag = isTop ? (
     <div className="px-2">
@@ -81,9 +90,13 @@ const WordCard = ({ word, noLink }) => {
               <WorkVotes word={word} />
             </div>
             <div className="flex gap-4">
+              <div className="text-sm text-gray-300 dark:text-gray-600">
+                Added by {!ownerId ? "guest" : ""}{" "}
+                {formatDistanceToNow(new Date(createdAt), { addSuffix: true })}
+              </div>
               <Link
                 href={`/word/${word.id}/suggest`}
-                className="text-blue-300 hover:text-blue-700 transition-colors duration-150 ease-in-out"
+                className="text-gray-300 dark:text-gray-600 transition-colors duration-150 ease-in-out"
               >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -102,7 +115,7 @@ const WordCard = ({ word, noLink }) => {
               </Link>
               <Link
                 href={`/word/${word.id}/report`}
-                className="text-blue-300 hover:text-blue-700 transition-colors duration-150 ease-in-out"
+                className="text-gray-300 dark:text-gray-600 transition-colors duration-150 ease-in-out"
               >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
