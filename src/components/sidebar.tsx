@@ -9,13 +9,13 @@ const SideBar = () => {
       <div className="mb-4 hidden md:block">
         <Contribute />
       </div>
-      <div className="mb-4">
+      <div className="mb-4 hidden md:block">
         <TopWords />
       </div>
-      <div className="mb-4">
+      <div className="mb-4 hidden md:block">
         <Tags />
       </div>
-      <div className="mb-4">
+      <div className="mb-4 hidden md:block">
         <Alphabets />
       </div>
     </div>
