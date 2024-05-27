@@ -90,10 +90,10 @@ const WordCard = ({ word, noLink }) => {
               <WorkVotes word={word} />
             </div>
             <div className="flex gap-4">
-              <div className="text-sm text-gray-300 dark:text-gray-600">
+              {/* <div className="text-sm text-gray-300 dark:text-gray-600">
                 Added by {!ownerId ? "guest" : ""}{" "}
                 {formatDistanceToNow(new Date(createdAt), { addSuffix: true })}
-              </div>
+              </div> */}
               <Link
                 href={`/word/${word.id}/suggest`}
                 className="text-gray-300 dark:text-gray-600 transition-colors duration-150 ease-in-out"
